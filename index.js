@@ -8,7 +8,48 @@ const questions = ['What is your name?', 'What is the title of the project?', 'P
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.appendFile(fileName + '.md', data, err => {
+        if (err) {
+            console.error(err)
+            return
+        }
+    });
+}
+
+function getAnswers() {
+    inquirer.prompt([{
+        name: "name",
+        type: "input",
+        message: questions[0],
+    }, {
+        name: 'title',
+        type: 'input',
+        message: questions[1]
+    }, {
+        name: 'description',
+        type: 'input',
+        message: questions[2]
+    }, {
+        name: 'install',
+        type: 'input',
+        message: questions[3]
+    }, {
+        name: 'usage',
+        type: 'input',
+        message: questions[4]
+    }, {
+        name: 'contribute',
+        type: 'input',
+        message: questions[5]
+    }, {
+        name: 'test',
+        type: 'input',
+        message: questions[6]
+    }]).then(answer => {
+
+    })
+}
 
 // TODO: Create a function to initialize app
 function init() {}
