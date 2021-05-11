@@ -7,16 +7,15 @@ const questions = ['What is your name?', 'What is the title of the project?', 'P
     'Provide installation instructions: ', 'Provide usage information: ', 'Provide contribution guidelines: ', 'Provide testing instructions: '
 ];
 
+//An array to hold the users input
+const answers = [];
+
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.appendFile(fileName + '.md', data, err => {
-        if (err) {
-            console.error(err)
-            return
-        }
-    });
+
 }
 
+//Function to prompt the user for input
 function getAnswers() {
     inquirer.prompt([{
         name: "name",
@@ -46,13 +45,20 @@ function getAnswers() {
         name: 'test',
         type: 'input',
         message: questions[6]
+    }, {
+        name: 'license',
+        type: 'list',
+        message: 'Please select a license: ',
+        choices: ['GNU GPLv3', 'MIT', 'ISC', 'Apache License 2.0']
     }]).then(answer => {
-
+        answers.push(answer.name, answer.title, answer.description, answer.install, answer.usage, answer.contribute, answer.test, answer.license);
     })
 }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+    getAnswers();
+}
 
 // Function call to initialize app
 init();
