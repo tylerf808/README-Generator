@@ -57,7 +57,7 @@ function getAnswers() {
 
 // TODO: Create a function to initialize app
 function init() {
-    getAnswers();
+
 }
 
 // Function call to initialize app
