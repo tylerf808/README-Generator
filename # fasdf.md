@@ -1,0 +1,1 @@
+{"name":"asd","title":"fasdf","description":"asdf","install":"asd","usage":"fasdf","contribute":"asd","test":"fasdf","license":"GNU GPLv3"}
