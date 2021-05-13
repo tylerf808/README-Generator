@@ -10,9 +10,16 @@ const questions = ['What is your name?', 'What is the title of the project?', 'P
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    const name = JSON.stringify(data.name).replace(/['"]+/g, '');
-    const badge = renderLicenseSection(data.license)
-    const text = (name + badge)
+    const name = "Author: " + JSON.stringify(data.name).replace(/['"]+/g, '') + "\n";
+    const title = JSON.stringify(data.title).replace(/['"]+/g, '') + "\n";
+    const description = "Description: " + JSON.stringify(data.description).replace(/['"]+/g, '') + "\n";
+    const install = "Install: " + JSON.stringify(data.install).replace(/['"]+/g, '') + "\n";
+    const usage = "Usage: " + JSON.stringify(data.usage).replace(/['"]+/g, '') + "\n";
+    const contribute = "Contribute: " + JSON.stringify(data.contribute).replace(/['"]+/g, '') + "\n";
+    const test = "Testing: " + JSON.stringify(data.test).replace(/['"]+/g, '') + "\n";
+    const badge = renderLicenseSection(data.license) + "\n";
+    const text = title + "   |   " + badge + "\n" + description + "\n" + install + "\n" + usage + "\n" + contribute +
+        "\n" + test;
     fs.appendFile(fileName + '.md', text, function(err) {
         if (err) throw err;
         console.log("README created!")
