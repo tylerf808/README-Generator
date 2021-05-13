@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateMarkdown = require('./utils/generateMarkdown');
+const { generateMarkdown, renderLicenseSection } = require('./utils/generateMarkdown');
 
 // TODO: Create an array of questions for user input
 const questions = ['What is your name?', 'What is the title of the project?', 'Provide a description for the project: ',
@@ -10,7 +10,10 @@ const questions = ['What is your name?', 'What is the title of the project?', 'P
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.appendFile(fileName + '.md', JSON.stringify(data), function(err) {
+    const name = JSON.stringify(data.name).replace(/['"]+/g, '');
+    const badge = renderLicenseSection(data.license)
+    const text = (name + badge)
+    fs.appendFile(fileName + '.md', text, function(err) {
         if (err) throw err;
         console.log("README created!")
     });
