@@ -16,18 +16,19 @@ function writeToFile(fileName, data) {
     const name = "## Author: \n" + JSON.stringify(data.name).replace(/['"]+/g, '') + "\n";
     const title = JSON.stringify(data.title).replace(/['"]+/g, '') + "\n";
     const description = "## Description: \n" + JSON.stringify(data.description).replace(/['"]+/g, '') + "\n";
-    const install = "## Install: \n" + JSON.stringify(data.install).replace(/['"]+/g, '') + "\n";
+    const install = "## Installation: \n" + JSON.stringify(data.install).replace(/['"]+/g, '') + "\n";
     const usage = "## Usage: \n" + JSON.stringify(data.usage).replace(/['"]+/g, '') + "\n";
     const contribute = "## Contributions: \n" + JSON.stringify(data.contribute).replace(/['"]+/g, '') + "\n";
     const test = "## Testing: \n" + JSON.stringify(data.test).replace(/['"]+/g, '') + "\n";
     const badge = renderLicenseSection(data.license) + "\n";
-    const text = "#" + title + "\n" + tableOfCon + "\n" + badge + "\n" + description + "\n" + install + "\n" + usage + "\n" + contribute +
+    const text = "# " + title + "\n" + "------\n" + name + "\n" + tableOfCon + "\n" + badge + "\n" + description + "\n" + install + "\n" + usage + "\n" + contribute +
         "\n" + test;
     fs.appendFile(fileName + '.md', text, function(err) {
         if (err) throw err;
         console.log("README created!")
     });
 }
+
 
 //Function to prompt the user for input
 function getAnswers() {
