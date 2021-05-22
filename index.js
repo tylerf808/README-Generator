@@ -23,7 +23,7 @@ function writeToFile(fileName, data) {
     const badge = renderLicenseSection(data.license) + "\n";
     const text = "# " + title + "\n" + "------\n" + name + "\n" + tableOfCon + "\n" + badge + "\n" + description + "\n" + install + "\n" + usage + "\n" + contribute +
         "\n" + test;
-    fs.appendFile(fileName + '.md', text, function(err) {
+    fs.appendFile('README.md', text, function(err) {
         if (err) throw err;
         console.log("README created!")
     });
